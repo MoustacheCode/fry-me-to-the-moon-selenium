@@ -7,7 +7,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage {
+public class HomePage extends BasePage {
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
 
 
     // Locators

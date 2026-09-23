@@ -29,7 +29,7 @@ public class BasePage {
 
     public List<WebElement> waitForAllVisible(By locator) {
 
-        return (List)this.wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return this.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 
     }
 
@@ -43,13 +43,14 @@ public class BasePage {
 
         WebElement element = this.waitForVisible(locator);
         element.clear();
-        element.sendKeys(new CharSequence[]{inputText});
+        element.sendKeys(inputText);
 
     }
 
     public void click(By locator) {
 
         WebElement element = this.waitForClickable(locator);
+        element.click();
 
     }
 
