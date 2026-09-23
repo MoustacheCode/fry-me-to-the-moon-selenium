@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class HomePage {
-    protected final WebDriver driver;
-    protected WebDriverWait wait;
+
 
     // Locators
     private final By loginButton = By.linkText("Login");
@@ -19,10 +18,5 @@ public class HomePage {
     private final By searchRecipe = By.id("search-query");
     private final By logoutButton = By.linkText("Logout");
 
-    public HomePage(WebDriver driver) {
 
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigReader.explicitWait()));
-
-    }
 }
