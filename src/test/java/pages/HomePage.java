@@ -23,4 +23,33 @@ public class HomePage extends BasePage {
     private final By logoutButton = By.linkText("Logout");
 
 
+    public LoginPage clickLogin() {
+        click(loginButton);
+        return new LoginPage(driver);
+    }
+
+    public void clickLogout() {
+        click(logoutButton);
+    }
+
+    public void searchRecipe(String recipeName) {
+        type(searchRecipe, recipeName);
+    }
+
+    public void selectCategory(String category) {
+        click(categoryButton);
+    }
+
+    public void clickFilter() {
+        click(filterButton);
+    }
+
+    public AddRecipePage clickAddRecipe() {
+        click(addRecipeButton);
+        return new AddRecipePage(driver);
+    }
+
+
+
+
 }
