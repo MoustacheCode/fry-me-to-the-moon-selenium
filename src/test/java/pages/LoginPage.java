@@ -1,5 +1,6 @@
 package pages;
 
+import config.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,12 +14,23 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public HomePage attemptLoginAs(String username, String password) {
+
+    public void attemptLoginAs(String username, String password) {
         this.type(this.usernameInput, username);
         this.type(this.passwordInput, password);
         this.click(this.loginButton);
+    }
+
+    public HomePage successfullyLogin() {
+        this.type(this.usernameInput, ConfigReader.standardUsername());
+        this.type(this.passwordInput, ConfigReader.standardPassword());
+        this.click(this.loginButton);
         return new HomePage(driver);
     }
+
+
+
+
 }
 
 
