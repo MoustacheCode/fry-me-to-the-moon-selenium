@@ -15,15 +15,16 @@ public class HomePage extends BasePage {
 
 
     // Locators
-    private final By loginButton = By.linkText("Login");
+    private final By loginButton = By.cssSelector("a[href='/login/']");
     private final By categoryButton = By.id("category");
     private final By filterButton = By.id("filter-btn");
-    private final By addRecipeButton = By.linkText("Add Recipe");
+    private final By addRecipeButton = By.cssSelector("a[href='/recipe/new']");
     private final By searchRecipe = By.id("search-query");
-    private final By logoutButton = By.linkText("Logout");
+    private final By logoutButton = By.xpath("//button[text()='Logout']");
 
 
     public LoginPage clickLogin() {
+        System.out.println(driver.getCurrentUrl());
         click(loginButton);
         return new LoginPage(driver);
     }
@@ -47,6 +48,10 @@ public class HomePage extends BasePage {
     public AddRecipePage clickAddRecipe() {
         click(addRecipeButton);
         return new AddRecipePage(driver);
+    }
+
+    public boolean isLoggedIn() {
+        return isDisplayed(logoutButton);
     }
 
 
