@@ -9,6 +9,7 @@ public class LoginPage extends BasePage {
     private final By usernameInput = By.id("id_username");
     private final By passwordInput = By.id("id_password");
     private final By loginButton = By.cssSelector("button.btn-register");
+    private final By error = By.cssSelector("ul.errorlist.nonfield li");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -26,6 +27,10 @@ public class LoginPage extends BasePage {
         this.type(this.passwordInput, ConfigReader.standardPassword());
         this.click(this.loginButton);
         return new HomePage(driver);
+    }
+
+    public String getErrorMessage() {
+        return this.textOf(this.error);
     }
 
 
