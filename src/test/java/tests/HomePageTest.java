@@ -1,6 +1,6 @@
 package tests;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.RecipeCard;
@@ -35,6 +35,6 @@ public class HomePageTest extends BaseTest {
         RecipeCard recipeCard = new RecipeCard(driver);
         recipeCard.clickViewRecipeButton();
         RecipePage recipePage = new RecipePage(driver);
-        Assert.assertTrue(recipePage.isTitleDisplayed(), "Smooth Vanilla Cheesecake");
+        Assert.assertTrue(recipePage.isTitleDisplayed(), "Failed to navigate to the Recipe: Title not displayed");
     }
 }

@@ -1,6 +1,6 @@
 package tests;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;

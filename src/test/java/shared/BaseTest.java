@@ -2,8 +2,8 @@ package shared;
 
 import config.ConfigReader;
 import config.WebDriverFactory;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
 import org.openqa.selenium.WebDriver;
 
 public class BaseTest {
@@ -14,7 +14,7 @@ public class BaseTest {
 
     }
 
-    @BeforeEach
+    @BeforeMethod
     public void setup() {
 
         this.driver = WebDriverFactory.createDriver(ConfigReader.browser());
@@ -22,7 +22,7 @@ public class BaseTest {
 
     }
 
-    @AfterEach
+    @AfterMethod
     public void teardown() {
         if (this.driver != null) {
             this.driver.quit();
