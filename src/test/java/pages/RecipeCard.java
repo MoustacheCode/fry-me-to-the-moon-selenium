@@ -30,6 +30,14 @@ public class RecipeCard extends BasePage {
         return new DeleteRecipePage(driver);
     }
 
+    public String getRecipeTitle() {
+        return textOf(recipeTitle);
+    }
+
+    public String getRecipeCategory() {
+        return textOf(recipeCategory);
+    }
+
 }
 
 
