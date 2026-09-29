@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.RecipeCard;
+import pages.RecipePage;
 import shared.BaseTest;
 
 public class HomePageTest extends BaseTest {
@@ -26,5 +27,14 @@ public class HomePageTest extends BaseTest {
         RecipeCard recipeCard = new RecipeCard(driver);
         Assert.assertEquals(recipeCard.getRecipeCategory(), "Desserts");
 
+    }
+
+    @Test
+    public void userCanViewRecipe() {
+        HomePage homePage = new HomePage(driver);
+        RecipeCard recipeCard = new RecipeCard(driver);
+        recipeCard.clickViewRecipeButton();
+        RecipePage recipePage = new RecipePage(driver);
+        Assert.assertTrue(recipePage.isTitleDisplayed(), "Smooth Vanilla Cheesecake");
     }
 }
