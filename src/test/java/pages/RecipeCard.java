@@ -12,6 +12,8 @@ public class RecipeCard extends BasePage {
     private final By editRecipeButton = By.linkText("Edit");
     private final By viewRecipeButton = By.linkText("View");
     private final By deleteRecipeButton = By.linkText("Delete");
+    private final By recipeTitle = By.cssSelector("h6.card-title");
+    private final By recipeCategory = By.cssSelector("p.card-text");
 
     public AddRecipePage clickEditRecipeButton() {
         click(editRecipeButton);

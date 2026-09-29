@@ -1,10 +1,10 @@
-package shared;
+package tests;
 
-import config.ConfigReader;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
+import shared.BaseTest;
 
 public class LoginTest extends BaseTest {
     public LoginTest() {
