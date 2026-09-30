@@ -30,4 +30,22 @@ public class AddRecipeTest extends BaseTest {
         Assert.assertEquals(recipeCard.getRecipeTitle(), "Rik's Test Recipe");
 
     }
+
+    @Test
+    public void userCanCancelRecipe() {
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginpage = homePage.clickLogin();
+        homePage = loginpage.successfullyLogin();
+        AddRecipePage addRecipePage = homePage.clickAddRecipe();
+        addRecipePage.enterTitle("Rik's Cancel Recipe");
+        addRecipePage.enterDescription("A delicious Test Recipe to be cancelled in 2 seconds!");
+        addRecipePage.enterInstructions("Turn off the oven");
+        addRecipePage.enterIngredients("Throw it all in the bin because we've changed our minds!");
+        addRecipePage.selectCategory("Snacks");
+        addRecipePage.enterCookTime(25);
+        addRecipePage.cancelRecipe();
+        HomePage redirectedHomePage = new HomePage(driver);
+        Assert.assertTrue(redirectedHomePage.isLoggedIn(), "The user was not redirected back after cancel");
+    }
+
 }
