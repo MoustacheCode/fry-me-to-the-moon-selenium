@@ -48,4 +48,15 @@ public class AddRecipeTest extends BaseTest {
         Assert.assertTrue(redirectedHomePage.isLoggedIn(), "The user was not redirected back after cancel");
     }
 
+    @Test
+    public void userCantSaveWithoutTitle() {
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginpage = homePage.clickLogin();
+        homePage = loginpage.successfullyLogin();
+        AddRecipePage addRecipePage = homePage.clickAddRecipe();
+        addRecipePage.saveRecipe();
+        Assert.assertTrue(addRecipePage.isTitleFieldRequired(), "Title field is not marked as req'd");
+
+    }
+
 }

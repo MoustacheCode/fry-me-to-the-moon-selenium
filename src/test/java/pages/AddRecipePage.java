@@ -66,6 +66,11 @@ public class AddRecipePage extends BasePage {
         return driver.getCurrentUrl().contains("/recipe/new");
     }
 
+    public boolean isTitleFieldRequired() {
+        String isRequired = driver.findElement(titleInput).getAttribute("required");
+        return isRequired != null && isRequired.equals("true");
+    }
+
 
 
 
