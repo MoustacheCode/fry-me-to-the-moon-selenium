@@ -19,7 +19,7 @@ public class HomePage extends BasePage {
     private final By loginButton = By.cssSelector("a[href='/login/']");
     private final By categoryButton = By.id("category");
     private final By filterButton = By.id("filter-btn");
-    private final By addRecipeButton = By.cssSelector("a[href='/recipe/new']");
+    private final By addRecipeButton = By.cssSelector("a[href='/recipe/new/']");
     private final By searchRecipe = By.id("search-query");
     private final By logoutButton = By.xpath("//button[contains(.,'Logout')]");
 
@@ -55,6 +55,10 @@ public class HomePage extends BasePage {
 
     public boolean isLoggedIn() {
         return waitForVisible(logoutButton).isDisplayed();
+    }
+
+    public boolean isLoggedOut() {
+        return waitForVisible(loginButton).isDisplayed();
     }
 
 

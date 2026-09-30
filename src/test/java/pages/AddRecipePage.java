@@ -62,7 +62,9 @@ public class AddRecipePage extends BasePage {
         return new HomePage(driver);
     }
 
-
+    public boolean isRecipeUrlCorrect() {
+        return driver.getCurrentUrl().contains("/recipe/new");
+    }
 
 
 

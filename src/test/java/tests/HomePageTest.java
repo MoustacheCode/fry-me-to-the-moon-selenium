@@ -2,9 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import pages.HomePage;
-import pages.RecipeCard;
-import pages.RecipePage;
+import pages.*;
 import shared.BaseTest;
 
 public class HomePageTest extends BaseTest {
@@ -36,5 +34,25 @@ public class HomePageTest extends BaseTest {
         recipeCard.clickViewRecipeButton();
         RecipePage recipePage = new RecipePage(driver);
         Assert.assertTrue(recipePage.isTitleDisplayed(), "Failed to navigate to the Recipe: Title not displayed");
+    }
+
+    @Test
+    public void userCanClickAddRecipe() {
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginpage = homePage.clickLogin();
+        homePage = loginpage.successfullyLogin();
+        System.out.println(driver.getCurrentUrl());
+        homePage.clickAddRecipe();
+        AddRecipePage addRecipePage = new AddRecipePage(driver);
+        Assert.assertTrue(addRecipePage.isRecipeUrlCorrect());
+    }
+
+    @Test
+    public void userCanClickLogOut() {
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginpage = homePage.clickLogin();
+        homePage = loginpage.successfullyLogin();
+        homePage.clickLogout();
+        Assert.assertTrue(homePage.isLoggedOut());
     }
 }
