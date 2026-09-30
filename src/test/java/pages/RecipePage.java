@@ -13,7 +13,7 @@ public class RecipePage extends BasePage {
     private final By recipeIngredients = By.cssSelector("ul.ingredients li");
     private final By recipeInstructions = By.cssSelector("ol.instructions li");
     private final By commentInput = By.id("comment-box");
-    private final By addCommentButton = By.cssSelector("button.btn.btn-primary.btn-sm");
+    private final By addCommentButton = By.cssSelector("form.mb-3 button");
     private final By successMessage = By.cssSelector("div.alert.alert-success");
 
     public RecipePage(WebDriver driver) {
@@ -46,7 +46,9 @@ public class RecipePage extends BasePage {
     }
 
     public RecipePage clickAddComment() {
-        this.click(addCommentButton);
+        // Trouble with the test initially not being able to find the Element to click add comment - Forced method to find the button
+        WebElement button = driver.findElement(addCommentButton);
+        button.submit();
         return new RecipePage(driver);
     }
 
