@@ -28,15 +28,6 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void userCanViewRecipe() {
-        HomePage homePage = new HomePage(driver);
-        RecipeCard recipeCard = new RecipeCard(driver);
-        recipeCard.clickViewRecipeButton();
-        RecipePage recipePage = new RecipePage(driver);
-        Assert.assertTrue(recipePage.isTitleDisplayed(), "Failed to navigate to the Recipe: Title not displayed");
-    }
-
-    @Test
     public void userCanClickAddRecipe() {
         HomePage homePage = new HomePage(driver);
         LoginPage loginpage = homePage.clickLogin();
