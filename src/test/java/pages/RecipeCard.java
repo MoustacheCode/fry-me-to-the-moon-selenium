@@ -2,6 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class RecipeCard extends BasePage {
 
@@ -30,8 +33,8 @@ public class RecipeCard extends BasePage {
         return new DeleteRecipePage(driver);
     }
 
-    public String getRecipeTitle() {
-        return textOf(recipeTitle);
+    public List<String> getRecipeTitle() {
+        return driver.findElements(recipeTitle).stream().map(WebElement::getText).toList();
     }
 
     public String getRecipeCategory() {

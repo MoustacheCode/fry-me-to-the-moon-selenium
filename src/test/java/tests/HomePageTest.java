@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import pages.*;
@@ -12,9 +13,10 @@ public class HomePageTest extends BaseTest {
     @Test
     public void userCanSearchForRecipe() {
         HomePage homePage = new HomePage(driver);
-        homePage.searchRecipe("Cheesecake");
+        homePage.searchRecipe("Honey");
+        homePage.clickFilter();
         RecipeCard recipeCard = new RecipeCard(driver);
-        Assert.assertEquals(recipeCard.getRecipeTitle(), "Smooth Vanilla Cheesecake");
+        Assert.assertTrue(recipeCard.getRecipeTitle().contains("Honey Garlic Chicken Stir-Fry"));
     }
 
     @Test

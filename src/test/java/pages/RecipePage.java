@@ -56,4 +56,16 @@ public class RecipePage extends BasePage {
         return this.waitForVisible(successMessage).isDisplayed();
     }
 
+    // Alternative to clickAddComment Method
+//    public void click(By locator) {
+//
+//        WebElement element = waitForClickable(locator);
+//
+//        new Actions(driver)
+//                .scrollToElement(element)
+//                .click(element)
+//                .perform();
+//
+//    }
+
 }
