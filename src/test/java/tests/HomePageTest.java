@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -15,6 +16,8 @@ public class HomePageTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.searchRecipe("Honey");
         homePage.clickFilter();
+        // Implemented a wait to stop the Race Condition from occuring
+        homePage.waitForUrlToContain("Honey");
         RecipeCard recipeCard = new RecipeCard(driver);
         // Refactored to return results and make sure at least one of the returned results contains expected result
         Assert.assertTrue(recipeCard.getRecipeTitle().contains("Honey Garlic Chicken Stir-Fry"));
@@ -26,6 +29,7 @@ public class HomePageTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.selectCategory("Desserts");
         homePage.clickFilter();
+        homePage.waitForUrlToContain("desserts");
         RecipeCard recipeCard = new RecipeCard(driver);
         // Refactored to return all results as a List, and checks all results match expected result
         Assert.assertTrue(recipeCard.getRecipeCategory().stream().allMatch(category -> category.equals("Desserts")));
@@ -35,9 +39,9 @@ public class HomePageTest extends BaseTest {
     @Test
     public void userCanClickAddRecipe() {
         HomePage homePage = new HomePage(driver);
-        LoginPage loginpage = homePage.clickLogin();
-        homePage = loginpage.successfullyLogin();
-        System.out.println(driver.getCurrentUrl());
+        LoginPage loginPage = homePage.clickLogin();
+        homePage = loginPage.successfullyLogin();
+        // System.out.println(driver.getCurrentUrl());
         homePage.clickAddRecipe();
         AddRecipePage addRecipePage = new AddRecipePage(driver);
         Assert.assertTrue(addRecipePage.isRecipeUrlCorrect());

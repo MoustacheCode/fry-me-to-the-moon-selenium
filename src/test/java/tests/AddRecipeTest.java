@@ -8,6 +8,8 @@ import pages.LoginPage;
 import pages.RecipeCard;
 import shared.BaseTest;
 
+import java.util.List;
+
 public class AddRecipeTest extends BaseTest {
     public AddRecipeTest() {
 
@@ -27,7 +29,8 @@ public class AddRecipeTest extends BaseTest {
         addRecipePage.enterCookTime(25);
         addRecipePage.saveRecipe();
         RecipeCard recipeCard = new RecipeCard(driver);
-        Assert.assertEquals(recipeCard.getRecipeTitle(), "Rik's Test Recipe");
+        List<String> recipeTitles = recipeCard.getRecipeTitle();
+        Assert.assertTrue(recipeTitles.contains("Rik's Test Recipe"));
 
     }
 

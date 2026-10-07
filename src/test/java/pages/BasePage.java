@@ -64,4 +64,9 @@ public class BasePage {
         return driver.findElement(locator).isDisplayed();
     }
 
+    public void waitForUrlToContain(String fraction) {
+        this.wait.until(ExpectedConditions.urlContains(fraction));
+    }
+
+
 }

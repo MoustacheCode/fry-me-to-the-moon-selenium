@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecipeCard extends BasePage {
 
@@ -35,13 +36,14 @@ public class RecipeCard extends BasePage {
 
     // Refactored to Stream and List all recipes on the page
     public List<String> getRecipeTitle() {
-        return driver.findElements(recipeTitle).stream().map(WebElement::getText).toList();
+       return driver.findElements(recipeTitle).stream().map(WebElement::getText).toList();
     }
 
     // Refactored to return all category results to return as a List
     public List<String> getRecipeCategory() {
         return driver.findElements(recipeCategory).stream().map(WebElement::getText).toList();
     }
+
 
 }
 
