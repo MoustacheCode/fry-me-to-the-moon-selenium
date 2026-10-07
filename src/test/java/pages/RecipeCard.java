@@ -33,12 +33,14 @@ public class RecipeCard extends BasePage {
         return new DeleteRecipePage(driver);
     }
 
+    // Refactored to Stream and List all recipes on the page
     public List<String> getRecipeTitle() {
         return driver.findElements(recipeTitle).stream().map(WebElement::getText).toList();
     }
 
-    public String getRecipeCategory() {
-        return textOf(recipeCategory);
+    // Refactored to return all category results to return as a List
+    public List<String> getRecipeCategory() {
+        return driver.findElements(recipeCategory).stream().map(WebElement::getText).toList();
     }
 
 }

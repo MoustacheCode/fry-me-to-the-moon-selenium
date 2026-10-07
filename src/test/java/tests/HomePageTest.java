@@ -16,8 +16,10 @@ public class HomePageTest extends BaseTest {
         homePage.searchRecipe("Honey");
         homePage.clickFilter();
         RecipeCard recipeCard = new RecipeCard(driver);
+        // Refactored to return results and make sure at least one of the returned results contains expected result
         Assert.assertTrue(recipeCard.getRecipeTitle().contains("Honey Garlic Chicken Stir-Fry"));
     }
+
 
     @Test
     public void userCanSelectCategory() {
@@ -25,7 +27,8 @@ public class HomePageTest extends BaseTest {
         homePage.selectCategory("Desserts");
         homePage.clickFilter();
         RecipeCard recipeCard = new RecipeCard(driver);
-        Assert.assertEquals(recipeCard.getRecipeCategory(), "Desserts");
+        // Refactored to return all results as a List, and checks all results match expected result
+        Assert.assertTrue(recipeCard.getRecipeCategory().stream().allMatch(category -> category.equals("Desserts")));
 
     }
 
