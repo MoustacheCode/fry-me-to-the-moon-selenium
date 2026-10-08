@@ -7,10 +7,11 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.RecipeCard;
 import shared.BaseTest;
+import shared.LoggedInBaseTest;
 
 import java.util.List;
 
-public class AddRecipeTest extends BaseTest {
+public class AddRecipeTest extends LoggedInBaseTest {
     public AddRecipeTest() {
 
     }
@@ -18,8 +19,6 @@ public class AddRecipeTest extends BaseTest {
     @Test
     public void userCanCreateRecipe() {
         HomePage homePage = new HomePage(driver);
-        LoginPage loginpage = homePage.clickLogin();
-        homePage = loginpage.successfullyLogin();
         AddRecipePage addRecipePage = homePage.clickAddRecipe();
         addRecipePage.enterTitle("Rik's Test Recipe");
         addRecipePage.enterDescription("A delicious Test Recipe in under 30 minutes!");
@@ -37,8 +36,6 @@ public class AddRecipeTest extends BaseTest {
     @Test
     public void userCanCancelRecipe() {
         HomePage homePage = new HomePage(driver);
-        LoginPage loginpage = homePage.clickLogin();
-        homePage = loginpage.successfullyLogin();
         AddRecipePage addRecipePage = homePage.clickAddRecipe();
         addRecipePage.enterTitle("Rik's Cancel Recipe");
         addRecipePage.enterDescription("A delicious Test Recipe to be cancelled in 2 seconds!");
@@ -54,8 +51,6 @@ public class AddRecipeTest extends BaseTest {
     @Test
     public void userCantSaveWithoutTitle() {
         HomePage homePage = new HomePage(driver);
-        LoginPage loginpage = homePage.clickLogin();
-        homePage = loginpage.successfullyLogin();
         AddRecipePage addRecipePage = homePage.clickAddRecipe();
         addRecipePage.saveRecipe();
         Assert.assertTrue(addRecipePage.isTitleFieldRequired(), "Title field is not marked as req'd");
