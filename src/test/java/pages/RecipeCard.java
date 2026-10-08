@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RecipeCard extends BasePage {
 
@@ -24,9 +23,9 @@ public class RecipeCard extends BasePage {
         return new AddRecipePage(driver);
     }
 
-    public RecipePage clickViewRecipeButton() {
+    public void clickViewRecipeButton() {
         click(viewRecipeButton);
-        return new RecipePage(driver);
+        new RecipePage(driver);
     }
 
     public DeleteRecipePage clickDeleteRecipeButton() {
@@ -36,6 +35,7 @@ public class RecipeCard extends BasePage {
 
     // Refactored to Stream and List all recipes on the page
     public List<String> getRecipeTitle() {
+        waitForAllVisible(recipeTitle);
        return driver.findElements(recipeTitle).stream().map(WebElement::getText).toList();
     }
 
@@ -43,6 +43,8 @@ public class RecipeCard extends BasePage {
     public List<String> getRecipeCategory() {
         return driver.findElements(recipeCategory).stream().map(WebElement::getText).toList();
     }
+
+
 
 
 }

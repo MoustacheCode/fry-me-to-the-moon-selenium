@@ -67,6 +67,7 @@ public class BasePage {
     public void waitForUrlToContain(String fraction) {
         this.wait.until(ExpectedConditions.urlContains(fraction));
     }
+    
 
 
 }
