@@ -22,7 +22,7 @@ public class AddRecipeTest extends LoggedInBaseTest {
         AddRecipePage addRecipePage = homePage.clickAddRecipe();
         addRecipePage.enterTitle("Rik's Test Recipe");
         addRecipePage.enterDescription("A delicious Test Recipe in under 30 minutes!");
-        addRecipePage.enterInstructions("Bake Test in over for 25 minutes");
+        addRecipePage.enterInstructions("Bake Test in oven for 25 minutes");
         addRecipePage.enterIngredients("Add 500g of Test to oven dish");
         addRecipePage.selectCategory("Snacks");
         addRecipePage.enterCookTime(25);
