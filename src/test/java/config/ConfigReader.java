@@ -18,7 +18,7 @@ public class ConfigReader {
 
     public static String get(String key) {
         String systemProperty = System.getProperty(key);
-        if (systemProperty != null && systemProperty.isBlank()) {
+        if (systemProperty != null && !systemProperty.isBlank()) {
             return systemProperty;
         } else {
             String envKey = key.replace(".", "_").toUpperCase();
