@@ -4,6 +4,7 @@ import config.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -47,12 +48,12 @@ public class BasePage {
 
     }
 
-    public void click(By locator) {
-
-        WebElement element = this.waitForClickable(locator);
-        element.click();
-
-    }
+//    public void click(By locator) {
+//
+//        WebElement element = this.waitForClickable(locator);
+//        element.click();
+//
+//    }
 
     public String textOf(By locator) {
 
@@ -66,6 +67,18 @@ public class BasePage {
 
     public void waitForUrlToContain(String fraction) {
         this.wait.until(ExpectedConditions.urlContains(fraction));
+    }
+
+    // Alternative to click Method - Allowing it to scroll correctly to element
+    public void click(By locator) {
+
+        WebElement element = waitForClickable(locator);
+
+        new Actions(driver)
+                .scrollToElement(element)
+                .click(element)
+                .perform();
+
     }
     
 
