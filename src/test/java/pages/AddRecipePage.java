@@ -61,8 +61,8 @@ public class AddRecipePage extends BasePage {
     }
 
     public HomePage cancelRecipe() {
-        WebElement cancelBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(cancelRecipeButton));
-        cancelBtn.click();
+       // WebElement cancelBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(cancelRecipeButton));
+        hoverAndClick(cancelRecipeButton);
         return new HomePage(driver);
     }
 

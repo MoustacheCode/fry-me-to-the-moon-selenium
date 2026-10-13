@@ -69,7 +69,17 @@ public class BasePage {
         this.wait.until(ExpectedConditions.urlContains(fraction));
     }
 
-    // Alternative to click Method - Allowing it to scroll correctly to element
+    public void hoverAndClick(By locator){
+
+        WebElement element = waitForVisible(locator);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+        WebElement subElement = waitForClickable(locator);
+        subElement.click();
+
+    }
+
+//     Alternative to click Method - Allowing it to scroll correctly to element
 //    public void click(By locator) {
 //
 //        WebElement element = waitForClickable(locator);
