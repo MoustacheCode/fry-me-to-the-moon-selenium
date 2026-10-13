@@ -72,10 +72,7 @@ public class BasePage {
     public void hoverAndClick(By locator){
 
         WebElement element = waitForVisible(locator);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).perform();
-        WebElement subElement = waitForClickable(locator);
-        subElement.click();
+        new Actions(driver).moveToElement(element).click().perform();
 
     }
 
