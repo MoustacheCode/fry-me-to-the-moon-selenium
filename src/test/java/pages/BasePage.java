@@ -48,12 +48,12 @@ public class BasePage {
 
     }
 
-//    public void click(By locator) {
-//
-//        WebElement element = this.waitForClickable(locator);
-//        element.click();
-//
-//    }
+    public void click(By locator) {
+
+        WebElement element = this.waitForClickable(locator);
+        element.click();
+
+    }
 
     public String textOf(By locator) {
 
@@ -70,16 +70,16 @@ public class BasePage {
     }
 
     // Alternative to click Method - Allowing it to scroll correctly to element
-    public void click(By locator) {
-
-        WebElement element = waitForClickable(locator);
-
-        new Actions(driver)
-                .scrollToElement(element)
-                .click(element)
-                .perform();
-
-    }
+//    public void click(By locator) {
+//
+//        WebElement element = waitForClickable(locator);
+//
+//        new Actions(driver)
+//                .scrollToElement(element)
+//                .click(element)
+//                .perform();
+//
+//    }
     
 
 
