@@ -60,8 +60,7 @@ public class AddRecipePage extends BasePage {
     }
 
     public HomePage cancelRecipe() {
-        WebElement button = driver.findElement(cancelRecipeButton);
-        button.submit();
+        driver.findElement(cancelRecipeButton).click();
         return new HomePage(driver);
     }
 
