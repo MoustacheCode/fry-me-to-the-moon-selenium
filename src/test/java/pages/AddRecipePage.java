@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class AddRecipePage extends BasePage {
@@ -53,12 +54,14 @@ public class AddRecipePage extends BasePage {
     }
 
     public HomePage saveRecipe() {
-        click(this.saveRecipeButton);
+        WebElement button = driver.findElement(saveRecipeButton);
+        button.submit();
         return new HomePage(driver);
     }
 
     public HomePage cancelRecipe() {
-        click(this.cancelRecipeButton);
+        WebElement button = driver.findElement(cancelRecipeButton);
+        button.submit();
         return new HomePage(driver);
     }
 
